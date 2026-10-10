@@ -1,0 +1,32 @@
+[Unit]
+Description=Personal AI Assistant (Slack + Cursor gateway)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pai
+Group=pai
+WorkingDirectory=/opt/pai
+EnvironmentFile=/etc/pai.env
+ExecStart=/usr/bin/node /opt/pai/dist/src/index.js
+Restart=on-failure
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/pai /opt/pai/data
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=pai
+
+[Install]
+WantedBy=multi-user.target

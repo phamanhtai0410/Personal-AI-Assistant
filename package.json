@@ -1,0 +1,38 @@
+{
+  "name": "personal-ai-assistant",
+  "version": "1.0.0",
+  "description": "Slack gateway harness for a personal Cursor agent on a VPS",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/src/index.js",
+    "dev": "tsx src/index.ts",
+    "spike": "tsx scripts/spike-local.ts",
+    "sdk-login": "tsx scripts/sdk-login.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "cursor",
+    "slack",
+    "agent",
+    "harness"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@cursor/sdk": "^1.0.37",
+    "@slack/bolt": "^5.1.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

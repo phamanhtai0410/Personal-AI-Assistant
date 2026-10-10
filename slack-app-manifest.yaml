@@ -1,0 +1,55 @@
+display_information:
+  name: Personal AI Assistant
+  description: Slack gateway for a personal Cursor agent harness
+  background_color: "#1a1a2e"
+features:
+  bot_user:
+    display_name: PAI
+    always_online: true
+  app_home:
+    home_tab_enabled: false
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: false
+  slash_commands:
+    - command: /new
+      description: Start a fresh Cursor agent for this conversation
+      usage_hint: "[optional note]"
+      should_escape: false
+    - command: /stop
+      description: Cancel the active Cursor agent run
+      should_escape: false
+    - command: /usage
+      description: Show daily run count, tokens, and model
+      should_escape: false
+    - command: /models
+      description: List Cursor models available on your account
+      should_escape: false
+    - command: /model
+      description: Show or switch the Cursor model for this chat
+      usage_hint: "[global] <model-id>"
+      should_escape: false
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - im:history
+      - im:read
+      - im:write
+      - channels:history
+      - channels:read
+      - groups:history
+      - groups:read
+      - app_mentions:read
+      - commands
+settings:
+  event_subscriptions:
+    bot_events:
+      - message.im
+      - message.channels
+      - message.groups
+      - app_mention
+  interactivity:
+    is_enabled: false
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false

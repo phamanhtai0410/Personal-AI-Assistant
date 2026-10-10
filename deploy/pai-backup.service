@@ -1,0 +1,11 @@
+[Unit]
+Description=Backup Personal AI Assistant vault and SQLite
+After=network.target
+
+[Service]
+Type=oneshot
+User=pai
+Group=pai
+Environment=PAI_DATA=/var/lib/pai
+Environment=BACKUP_ROOT=/var/backups/pai
+ExecStart=/opt/pai/deploy/backup.sh
