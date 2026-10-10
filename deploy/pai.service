@@ -9,6 +9,10 @@ User=pai
 Group=pai
 WorkingDirectory=/opt/pai
 EnvironmentFile=/etc/pai.env
+Environment=HOME=/var/lib/pai
+Environment=XDG_CONFIG_HOME=/var/lib/pai/.config
+Environment=XDG_CACHE_HOME=/var/lib/pai/.cache
+Environment=XDG_DATA_HOME=/var/lib/pai/.local/share
 ExecStart=/usr/bin/node /opt/pai/dist/src/index.js
 Restart=on-failure
 RestartSec=5
@@ -19,7 +23,7 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/var/lib/pai /opt/pai/data
+ReadWritePaths=/var/lib/pai /opt/pai/data /opt/pai/spike-cwd
 ProtectKernelTunables=true
 ProtectControlGroups=true
 RestrictSUIDSGID=true
